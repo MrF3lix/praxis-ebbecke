@@ -20,7 +20,7 @@ export default class Praxis extends React.Component {
     componentDidMount() {
         setTimeout(() => {
             this.setState({ isLoading: false })
-        }, 1000)
+        }, 500)
     }
 
     render() {
