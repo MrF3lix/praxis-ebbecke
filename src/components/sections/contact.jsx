@@ -40,7 +40,7 @@ const ContactSection = () => (
 
         </div>
         <div className="map__container">
-            <img src={MapImage} />
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9264.385733890887!2d7.84669644579348!3d49.487239125057116!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x479613f4d97629c5%3A0x39169c445e5d8a10!2sPraxis+f%C3%BCr+Naturheilverfahren%2C+Osteopathie+und+Physiotherapie+Julia+Ebbecke!5e0!3m2!1sde!2snl!4v1544397104449" allowFullScreen></iframe>
         </div>
     </section>
 )
