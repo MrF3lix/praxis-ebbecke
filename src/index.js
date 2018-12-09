@@ -1,12 +1,15 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import * as ServiceWorker from './serviceWorker'
+import 'babel-polyfill'
 
-ReactDOM.render(<App />, document.getElementById('root'));
+import Praxis from './components/praxis'
+import './assets/scss/app.scss'
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: http://bit.ly/CRA-PWA
-serviceWorker.unregister();
+ReactDOM.render(
+    <Praxis/>,
+    document.getElementById('root')
+)
+
+// ServiceWorker.register()
+ServiceWorker.unregister()
