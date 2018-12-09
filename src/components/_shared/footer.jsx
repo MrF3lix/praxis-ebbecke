@@ -39,7 +39,7 @@ const Footer = () => (
         </div>
         <div className="links__container">
             <div className="inner">
-                <p>© 2018 Saaro Webdesign - Alle Rechte vorbehalten</p>
+                <p>© 2018 Julia Ebbecke - Alle Rechte vorbehalten</p>
                 <div className="links">
                     <a>Impressum</a>
                     <a>Datenschutz</a>
