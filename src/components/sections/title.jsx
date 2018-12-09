@@ -16,7 +16,7 @@ const TitleSection = () => (
 
                     Wir würden uns freuen, Sie in unserer Praxis begrüßen zu dürfen.
                     </p>
-                <Button>Kontakt</Button>
+                {/* <Button>Kontakt</Button> */}
             </div>
         </div>
         <div className="background__div"></div>
