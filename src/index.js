@@ -11,5 +11,5 @@ ReactDOM.render(
     document.getElementById('root')
 )
 
-// ServiceWorker.register()
-ServiceWorker.unregister()
+ServiceWorker.register()
+// ServiceWorker.unregister()
