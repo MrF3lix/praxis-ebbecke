@@ -1,8 +1,18 @@
 const db = require('../helpers/db.js')
 const Article = db.Article
+const Team = db.Team
+const Time = db.Time
 
 const getAll = async() => {
     return await Article.find().select()
+}
+
+const getAllTeamMembers = async() => {
+    return await Team.find().select()
+}
+
+const getOpeningTimes = async() => {
+    return await Time.find().select()
 }
 
 const getById = async (id) => {
@@ -31,6 +41,8 @@ const _delete = (id) => {
 
 module.exports = {
     getAll,
+    getAllTeamMembers,
+    getOpeningTimes,
     getById,
     create,
     update,

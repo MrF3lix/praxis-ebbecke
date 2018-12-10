@@ -1,0 +1,22 @@
+[
+    {
+        "day": "Montag",
+        "value": "8:00 – 14:00 Uhr und 17:00 – 22:00 Uhr"
+    },
+    {
+        "day": "Dienstag",
+        "value": "8:00 – 14:00 Uhr und 15:00 – 19:00 Uhr"
+    },
+    {
+        "day": "Mittwoch",
+        "value": "8:00 – 14:00 Uhr"
+    },
+    {
+        "day": "Donnerstag",
+        "value": "8:00 – 14:00 Uhr"
+    },
+    {
+        "day": "Freitag",
+        "value": "8:00 – 13:30 Uhr und 14:00 – 19:00 Uhr"
+    }
+]

@@ -14,6 +14,18 @@ const getAll = (req, res, next) => {
         .catch(err => next(err))
 }
 
+const getAllTeamMembers = (req, res, next) => {
+    cmsService.getAllTeamMembers()
+        .then(team => res.json(team))
+        .catch(err => next(err))
+}
+
+const getOpeningTimes = (req, res, next) => {
+    cmsService.getOpeningTimes()
+        .then(times => res.json(times))
+        .catch(err => next(err))
+}
+
 const getById = (req, res, next) => {
     cmsService.getById(req.params.id)
         .then(user => user ? res.json(user) : res.sendStatus(404))
@@ -34,6 +46,8 @@ const _delete = (req, res, next) => {
 
 router.post('/add', create)
 router.get('/getAll', getAll)
+router.get('/getAllTeamMembers', getAllTeamMembers)
+router.get('/getOpeningTimes', getOpeningTimes)
 router.get('/:id', getById)
 router.put('/:id', update)
 router.delete('/:id', _delete)

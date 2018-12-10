@@ -10,7 +10,9 @@ const jwt = () => {
             '/api/users/authenticate',
             '/api/users/register',
             '/api/cms/add',
-            '/api/cms/getAll'
+            '/api/cms/getAll',
+            '/api/cms/getAllTeamMembers',
+            '/api/cms/getOpeningTimes'
         ]
     })
 }

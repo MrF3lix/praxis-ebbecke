@@ -1,0 +1,22 @@
+[
+    {
+        "name": "Julia Ebbecke",
+        "position": "Heilpraktiker",
+        "image": "team-julia-ebbecke.jpg"
+    },
+    {
+        "name": "Christiane Kira",
+        "position": "Heilpraktiker",
+        "image": "team-christiane-kira.jpg"
+    },
+    {
+        "name": "Daniela Christmann",
+        "position": "Praxisassistent",
+        "image": "team-daniela-christmann.jpg"
+    },
+    {
+        "name": "Bettina Huber",
+        "position": "Praxisassistent",
+        "image": "team-bettina-huber.jpg"
+    }
+]

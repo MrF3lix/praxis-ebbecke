@@ -3,7 +3,9 @@ const initialState = {
     isDev: false,
     isPageLoaded: false,
     apiUrl: 'http://localhost:8080/api',
-    content: []
+    content: [],
+    team: [],
+    times: []
 }
 
 const global = (state = initialState, action) => {
@@ -23,6 +25,16 @@ const global = (state = initialState, action) => {
                 ...state,
                 content: action.content,
                 isPageLoaded: true
+            }
+        case 'UPDATE_TEAM':
+            return {
+                ...state,
+                team: action.team
+            }
+        case 'UPDATE_TIMES':
+            return {
+                ...state,
+                times: action.times
             }
         default:
             return state

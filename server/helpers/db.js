@@ -6,5 +6,7 @@ mongoose.Promise = global.Promise
 
 module.exports = {
     User: require('../users/user.model.js'),
-    Article: require('../cms/cms.article.model.js')
+    Article: require('../cms/cms.article.model.js'),
+    Team: require('../cms/cms.team.model.js'),
+    Time: require('../cms/cms.times.model.js')
 }
