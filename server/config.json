@@ -1,0 +1,4 @@
+{
+    "connectionString": "mongodb://localhost/praxis-ebbecke",
+    "secret": "D6703519390B6266103745E966E800536B7917DB6511879A2E150FF9CABEA631"
+}
