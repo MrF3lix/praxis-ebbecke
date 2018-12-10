@@ -43,7 +43,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
     tryToUpdateIsPageLoaded: value => dispatch(tryToUpdateIsPageLoaded(value)),
-    updateAuthorization: () => dispatch(updateAuthorization())
+    updateAuthorization: value => dispatch(updateAuthorization(value))
 })
 
 
