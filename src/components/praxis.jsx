@@ -1,44 +1,40 @@
 import React, { lazy } from 'react'
-import Loading from './_shared/loading'
-import TeamSection from './sections/team';
+import TeamSection from './sections/team'
+import { connect } from 'react-redux'
+import { tryGetContent } from '../actions/cms-actions'
 
-const Footer = lazy(() => import('./_shared/footer'))
-const Header = lazy(() => import('./_shared/header'))
 const TitleSection = lazy(() => import('./sections/title'))
 const ContactSection = lazy(() => import('./sections/contact'))
 const MotivationSection = lazy(() => import('./sections/motivation'))
 
-export default class Praxis extends React.Component {
-    constructor(props) {
-        super(props)
-
-        this.state = {
-            isLoading: true
-        }
-    }
-
+class Praxis extends React.Component {
     componentDidMount() {
-        setTimeout(() => {
-            this.setState({ isLoading: false })
-        }, 500)
+        this.props.tryGetContent()
     }
 
     render() {
+        const { content } = this.props.global
         return (
-            <div className="root__container">
-                <Loading isLoading={this.state.isLoading}>
+            <main>
+                {content.length > 0 &&
                     <React.Fragment>
-                        <Header />
-                        <main>
-                            <TitleSection />
-                            <MotivationSection />
-                            <TeamSection />
-                            <ContactSection />
-                        </main>
-                        <Footer />
+                        <TitleSection content={content} />
+                        <MotivationSection content={content} />
+                        <TeamSection content={content} />
+                        <ContactSection content={content} />
                     </React.Fragment>
-                </Loading>
-            </div>
+                }
+            </main>
         )
     }
 }
+
+const mapStateToProps = state => ({
+    global: state.global
+})
+
+const mapDispatchToProps = dispatch => ({
+    tryGetContent: () => dispatch(tryGetContent())
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Praxis)

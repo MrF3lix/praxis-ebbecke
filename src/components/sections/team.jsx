@@ -5,15 +5,15 @@ import ChristianeKira from '../../assets/gfx/team-christiane-kira.jpg'
 import DanielaChristmann from '../../assets/gfx/team-daniela-christmann.jpg'
 import BettinaHuber from '../../assets/gfx/team-bettina-huber.jpg'
 
-const TeamSection = () => (
+const TeamSection = ({ content }) => (
     <section className="team">
         <div className="container">
             <div className="image__container">
                 <img src={TeamImage} />
             </div>
             <div className="content__container">
-                <h2>Unser Team</h2>
-                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
+                <h2>{content.find(a => a.elementId == 'TeamTitle').content}</h2>
+                <p>{content.find(a => a.elementId == 'TeamBody').content}</p>
             </div>
         </div>
         <div className="team__container">

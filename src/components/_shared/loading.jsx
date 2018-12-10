@@ -7,10 +7,10 @@ const LoadingContainer = () => (
     </div>
 )
 
-const Loading = ({ isLoading, children }) => (
+const Loading = ({ isLoaded, children }) => (
     <React.Fragment>
         <Suspense fallback={<LoadingContainer />}>
-            {isLoading &&
+            {!isLoaded &&
                 <LoadingContainer />
             }
             {children}

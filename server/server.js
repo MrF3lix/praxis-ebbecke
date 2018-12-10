@@ -16,8 +16,8 @@ const start = () => {
     server.use(express.static(path.join(__dirname, '../build')))
 
     server.use(jwt())
-    server.use('/cms', require('./cms/cms.controller.js'))
-    server.use('/users', require('./users/users.controller.js'))
+    server.use('/api/cms', require('./cms/cms.controller.js'))
+    server.use('/api/users', require('./users/users.controller.js'))
     server.get('/*', (req, res) => {
         res.sendFile(path.join(__dirname, '../build', 'index.html'))
     })

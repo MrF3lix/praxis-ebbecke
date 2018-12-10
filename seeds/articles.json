@@ -1,0 +1,32 @@
+[
+    {
+        "elementId": "MainTitle",
+        "title": "Titel",
+        "content": "PRAXIS FÜR NATURHEILVERFAHREN, OSTEOPATHIE & PHYSIOTHERAPIE"
+    },
+    {
+        "elementId": "MainSubTitle",
+        "title": "Untertitel",
+        "content": "Sie haben hier die Möglichkeit sich über die unterschiedlichen Therapie- und Behandlungskonzepte zu informieren.                    Am Herzen liegt uns, dass Sie sich in unserer Praxis in angenehmer, entspannter Atmosphäre professionell beraten und behandelt, und natürlich gut aufgehoben fühlen. Wir würden uns freuen, Sie in unserer Praxis begrüßen zu dürfen."
+    },
+    {
+        "elementId": "MotivationTitle",
+        "title": "Motivation",
+        "content": "Unser Anliegen: Der Mensch steht im Mittelpunkt"
+    },
+    {
+        "elementId": "MotivationBody",
+        "title": "Motivation Beschreibung",
+        "content": "Mit unserer therapeutischen Arbeit und ganzheitlichen Betrachtungsweise möchten wir unseren Patienten in ihrem Wunsch nach Gesundheit und Wohlbefinden begleiten und unterstützen. Jede Gesundheitsstörung oder Erkrankung erfordert ein individuelles Therapiekonzept. Im Mittelpunkt steht dabei immer der Mensch als Ganzes, als Einheit zwischen Körper, Geist und Seele. Wir Therapeuten arbeiten seit 15 Jahren Hand in Hand und bemühen uns so möglichst umfassend behandeln und beraten zu können, um eine fürsorgliche und qualifizierte Betreuung zu ermöglichen. Stoßen wir dabei an unsere Grenzen, empfehlen wir Ärzte oder Therapeuten mit anderen Schwerpunkten."
+    },
+    {
+        "elementId": "TeamTitle",
+        "title": "Team",
+        "content": "Unser Team"
+    },
+    {
+        "elementId": "TeamBody",
+        "title": "Team Beschreibung",
+        "content": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua."
+    }
+]

@@ -1,0 +1,9 @@
+[
+    {
+        "username": "AdminUser",
+        "firstName": "Admin",
+        "lastName": "User",
+        "email": "adminuser@saaro.ch",
+        "password": "$2a$10$f0uGANT7QLtoX9dBX7RKcupovYOxwp8xhtJZqdWTdNLOdVDCCjuLG"
+    }
+]

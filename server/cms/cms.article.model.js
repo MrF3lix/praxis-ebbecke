@@ -3,6 +3,7 @@ const Schema = mongoose.Schema
 
 const schema = new Schema({
     title: { type: String, required: true },
+    elementId: { type: String, required: true },
     content: { type: String, required: true },
     createdDate: { type: Date, default: Date.now }
 })
