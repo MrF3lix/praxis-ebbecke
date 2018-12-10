@@ -72,6 +72,26 @@ const global = (state = initialState, action) => {
                 authenticationToken: action.token,
                 isAuthenticated: true
             }
+        case 'UPDATE_CONTENT_VALUE':
+            return {
+                ...state,
+                content: state.content.map(c => {
+                    if (c.id == action.id) {
+                        c.content = action.value
+                    }
+                    return c
+                })
+            }
+        case 'UPDATE_TIME_VALUE':
+            return {
+                ...state,
+                times: state.times.map(t => {
+                    if (t.id == action.id) {
+                        t.value = action.value
+                    }
+                    return t
+                })
+            }
         default:
             return state
     }

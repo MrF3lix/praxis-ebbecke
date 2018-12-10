@@ -19,12 +19,10 @@ const jwt = () => {
 
 const isRevoked = async (req, payload, done) => {
     const user = await userService.getById(payload.sub)
+    
     if(!user) {
-        console.log('not authenticated')
         return done(null, true)
     }
-
-    console.log('authenticated')
     done()
 }
 

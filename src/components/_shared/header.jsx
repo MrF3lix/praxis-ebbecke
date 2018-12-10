@@ -9,7 +9,7 @@ const Header = ({ isAuthenticated, logout, login }) => (
             </div>
             <div className="navigation__items">
                 {isAuthenticated &&
-                    <a onClick={() => logout()}>Logout</a>
+                    <button onClick={() => logout()}>Logout</button>
                 }
             </div>
         </div>

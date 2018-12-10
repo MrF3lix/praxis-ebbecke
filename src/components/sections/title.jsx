@@ -9,7 +9,7 @@ const TitleSection = ({ content }) => (
             </div>
             <div className="content__container">
                 <h1>{content.find(a => a.elementId == 'MainTitle').content}</h1>
-                <p>{content.find(a => a.elementId == 'MainSubTitle').content}</p>
+                <p>{content.find(a => a.elementId == 'MainBody').content}</p>
             </div>
         </div>
         <div className="background__div"></div>

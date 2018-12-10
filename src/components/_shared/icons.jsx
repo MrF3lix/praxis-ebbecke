@@ -38,3 +38,20 @@ export const IconClose = () => (
         </svg>
     </span >
 )
+
+export const IconSave = () => (
+    <span className="icon">
+        <svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink">
+            <title>lockicon</title>
+            <desc>Created with Sketch.</desc>
+            <defs></defs>
+            <g id="symbols" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
+                <g id="lockicon">
+                    <rect id="Rectangle-path" stroke="#FF6319" strokeWidth="1.5" x="1.1226387" y="5.22934783" width="13.3095823" height="9.15010225" rx="0.3717"></rect>
+                    <circle id="Oval" fill="#FF6319" fillRule="nonzero" cx="7.90538569" cy="10.1161107" r="1.5"></circle>
+                    <path d="M3.93080603,5.10118986 C3.97738015,2.9846277 5.7065299,1.29310864 7.82360442,1.29310864 C9.94067894,1.29310864 11.6698287,2.9846277 11.7164028,5.10118986" id="Shape" stroke="#FF6319" strokeWidth="1.5"></path>
+                </g>
+            </g>
+        </svg>
+    </span >
+)

@@ -1,4 +1,5 @@
 import fetch from 'cross-fetch'
+import { generateMessage } from './global-actions'
 
 export const tryGetContent = () => (dispatch, getState) => {
     const state = getState()
@@ -29,6 +30,70 @@ export const tryGetTimes = () => (dispatch, getState) => {
     }).then(response => response.json())
         .then(json => dispatch(updateTimes(json)))
 }
+
+export const submitContent = (e) => (dispatch, getState) => {
+    e.preventDefault()
+    const state = getState()
+    const url = `${state.global.apiUrl}/cms/updateAll`
+
+    const values = new FormData(e.target)
+    let requestData = new URLSearchParams(values)
+    let token = window.sessionStorage.getItem('authorization')
+
+    fetch(url, {
+        method: 'POST',
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+        },
+        body: requestData
+    }).then(response => {
+        if (response.ok) {
+            response.json().then(payload => dispatch(generateMessage('info', payload.message)))
+        } else {
+            response.json().then(payload => dispatch(generateMessage('error', payload.message)))
+        }
+    })
+}
+export const submitTeam = (e) => (dispatch, getState) => {
+
+}
+export const submitTimes = (e) => (dispatch, getState) => {
+    e.preventDefault()
+    const state = getState()
+    const url = `${state.global.apiUrl}/cms/updateAllTimes`
+
+    const values = new FormData(e.target)
+    let requestData = new URLSearchParams(values)
+    let token = window.sessionStorage.getItem('authorization')
+
+    fetch(url, {
+        method: 'POST',
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+        },
+        body: requestData
+    }).then(response => {
+        if (response.ok) {
+            response.json().then(payload => dispatch(generateMessage('info', payload.message)))
+        } else {
+            response.json().then(payload => dispatch(generateMessage('error', payload.message)))
+        }
+    })
+}
+
+export const updateContentValue = (value, id) => ({
+    type: 'UPDATE_CONTENT_VALUE',
+    value,
+    id
+})
+
+export const updateTimeValue = (value, id) => ({
+    type: 'UPDATE_TIME_VALUE',
+    value,
+    id
+})
 
 const updateContent = content => ({
     type: 'UPDATE_CONTENT',

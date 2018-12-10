@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { tryGetContent, tryGetTeam, tryGetTimes } from '../actions/cms-actions'
+import { IconSave } from './_shared/icons'
+import { updateContentValue, updateTimeValue, tryGetContent, tryGetTeam, tryGetTimes, submitContent, submitTeam, submitTimes } from '../actions/cms-actions'
 
 class CMS extends React.Component {
 
@@ -15,26 +16,44 @@ class CMS extends React.Component {
             this.props.history.push('/login')
         }
     }
-
     render() {
         const { content, team, times } = this.props.global
         return (
-            <main>
+            <main className="cms">
                 <div className="inner">
-                    <h1>CMS</h1>
                     <h2>Content</h2>
-                    <div className="content__container">
-                        {content.map((content, i) => (
-                            <div key={i} className="content__item">
-                                <h3>{content.title}</h3>
-                                <p>{content.content}</p>
-                            </div>
-                        ))}
+                    <div className="cms__container">
+                        <form onSubmit={(e) => this.props.submitContent(e)}>
+                            {content.map((content, i) => (
+                                <div key={i} className="content__item">
+                                    <label for={content.elementId}>{content.title}</label>
+                                    {content.elementId.includes('Body') &&
+                                        <textarea
+                                            id={content.id}
+                                            name={content.id}
+                                            onChange={(e) => this.props.updateContentValue(e.target.value, content.id)}
+                                        >
+                                            {content.content}
+                                        </textarea>
+                                    }
+                                    {!content.elementId.includes('Body') &&
+                                        <input
+                                            id={content.id}
+                                            name={content.id}
+                                            type="text"
+                                            value={content.content}
+                                            onChange={(e) => this.props.updateContentValue(e.target.value, content.id)}
+                                        />
+                                    }
+                                </div>
+                            ))}
+                            <button type="submit">Save</button>
+                        </form>
                     </div>
                     <h2>Team</h2>
-                    <div className="team__container">
+                    <div className="cms__container team__container">
                         {team.map((member, i) => (
-                            <div key={i} className="team__item">
+                            <div key={i} className="content__item">
                                 <h3>{member.name}</h3>
                                 <p>{member.position}</p>
                                 <img src={`./assets/gfx/${member.image}`} />
@@ -42,14 +61,23 @@ class CMS extends React.Component {
                         ))}
                     </div>
                     <h2>Opening times</h2>
-                    <div className="times__container">
+                    <div className="cms__container">
                         <div className="times__item">
-                            {times.map((time, i) => (
-                                <div key={i} className="item">
-                                    <div className="day">{time.day}</div>
-                                    <div className="time">{time.value}</div>
-                                </div>
-                            ))}
+                            <form onSubmit={(e) => this.props.submitTimes(e)}>
+                                {times.map((time, i) => (
+                                    <div key={i} className="content__item">
+                                        <div className="day">{time.day}</div>
+                                        <input
+                                            id={time.id}
+                                            name={time.id}
+                                            type="text"
+                                            value={time.value}
+                                            onChange={(e) => this.props.updateTimeValue(e.target.value, time.id)}
+                                        />
+                                    </div>
+                                ))}
+                                <button type="submit">Save</button>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -65,7 +93,12 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
     tryGetContent: () => dispatch(tryGetContent()),
     tryGetTeam: () => dispatch(tryGetTeam()),
-    tryGetTimes: () => dispatch(tryGetTimes())
+    tryGetTimes: () => dispatch(tryGetTimes()),
+    submitContent: (e) => dispatch(submitContent(e)),
+    submitTeam: (e) => dispatch(submitTeam(e)),
+    submitTimes: (e) => dispatch(submitTimes(e)),
+    updateContentValue: (value, id) => dispatch(updateContentValue(value, id)),
+    updateTimeValue: (value, id) => dispatch(updateTimeValue(value, id))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(CMS)

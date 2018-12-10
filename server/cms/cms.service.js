@@ -35,6 +35,16 @@ const update = async (id, params) => {
     await article.save()
 }
 
+const updateTimes = async (id, params) => {
+    const time = await Time.findById(id)
+
+    if(!time) throw 'Time not found'
+
+    Object.assign(time, params)
+
+    await time.save()
+}
+
 const _delete = (id) => {
 
 }
@@ -46,5 +56,6 @@ module.exports = {
     getById,
     create,
     update,
+    updateTimes,
     delete: _delete
 }

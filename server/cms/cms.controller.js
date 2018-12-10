@@ -38,6 +38,22 @@ const update = (req, res, next) => {
         .catch(err => next(err))
 }
 
+const updateAll = (req, res, next) => {
+    Object.keys(req.body).map(key => {
+        cmsService.update(key, {content: req.body[key]})
+    })
+
+    res.json({message: 'Saved successfully!'})
+}
+
+const updateAllTimes = (req, res, next) => {
+    Object.keys(req.body).map(key => {
+        cmsService.updateTimes(key, {value: req.body[key]})
+    })
+
+    res.json({message: 'Saved successfully!'})
+}
+
 const _delete = (req, res, next) => {
     cmsService.delete(req.params.id)
         .then(() => res.json({}))
@@ -50,6 +66,8 @@ router.get('/getAllTeamMembers', getAllTeamMembers)
 router.get('/getOpeningTimes', getOpeningTimes)
 router.get('/:id', getById)
 router.put('/:id', update)
+router.post('/updateAll', updateAll)
+router.post('/updateAllTimes', updateAllTimes)
 router.delete('/:id', _delete)
 
 module.exports = router

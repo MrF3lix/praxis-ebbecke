@@ -138,7 +138,19 @@ input {
     background: transparent;
 }
 
-button[type='submit'] {
+textarea {
+    width: 100%;
+    font-size: 16px;
+    line-height: 22px;
+    padding: 10px 16px;
+    border-bottom: 1px solid $light;
+    font-weight: 400;
+    border: 1px solid $medium-grey;
+    background: transparent;
+    min-height: 200px;
+}
+
+button {
     margin: 0 auto;
     padding: 10px 40px;
     background-color: transparent;
