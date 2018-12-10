@@ -1,7 +1,7 @@
 import React, { Fragment, lazy } from 'react'
 import { connect } from 'react-redux'
 import { Route, Switch, withRouter } from 'react-router-dom'
-import { tryToUpdateIsPageLoaded, tryGetUserInformation } from './actions/global-actions.jsx'
+import { tryToUpdateIsPageLoaded, updateAuthorization } from './actions/global-actions.jsx'
 import Loading from './components/_shared/loading'
 import Messages from './components/_shared/messages'
 
@@ -11,8 +11,10 @@ const CMS = lazy(() => import('./components/cms'))
 const Login = lazy(() => import('./components/login'))
 
 class MainRouter extends React.Component {
-    componentDidMount() {
-        this.props.tryGetUserInformation()
+    logout() {
+        window.sessionStorage.removeItem("authorization")
+        this.props.updateAuthorization(false)
+        this.props.history.push('/')
     }
     render() {
         const { location, global } = this.props
@@ -20,7 +22,7 @@ class MainRouter extends React.Component {
             <div className="root__container">
                 <Messages />
                 <Loading isLoaded={global.isPageLoaded}>
-                    <Header />
+                    <Header isAuthenticated={global.isAuthenticated} logout={() => this.logout()} />
                     <Switch location={location}>
                         <Route path={'/'} component={Praxis} exact={true} />
                         <Route path={'/cms'} component={CMS} exact={true} />
@@ -38,7 +40,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
     tryToUpdateIsPageLoaded: value => dispatch(tryToUpdateIsPageLoaded(value)),
-    tryGetUserInformation: () => dispatch(tryGetUserInformation())
+    updateAuthorization: () => dispatch(updateAuthorization())
 })
 
 

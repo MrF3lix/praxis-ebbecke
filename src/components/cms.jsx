@@ -8,6 +8,12 @@ class CMS extends React.Component {
         this.props.tryGetContent()
         this.props.tryGetTeam()
         this.props.tryGetTimes()
+        this.checkAuth()
+    }
+    checkAuth() {
+        if (!this.props.global.isAuthenticated) {
+            this.props.history.push('/login')
+        }
     }
 
     render() {

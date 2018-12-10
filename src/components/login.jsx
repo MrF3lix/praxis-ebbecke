@@ -9,7 +9,7 @@ class Login extends React.Component {
     }
 
     render() {
-        const { authenticationToken } = this.props.global
+        const { isAuthenticated } = this.props.global
         return (
             <main>
                 <div className="login__container">
@@ -30,7 +30,7 @@ class Login extends React.Component {
                         </form >
                     </div>
                 </div>
-                {authenticationToken !== null &&
+                {isAuthenticated === true &&
                     <Redirect to={'/cms'} />
                 }
             </main>

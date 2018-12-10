@@ -26,26 +26,7 @@ export const submitLogin = (e) => (dispatch, getState) => {
     }).then(response => {
         if (response.ok) {
             response.json().then(payload => window.sessionStorage.setItem("authorization", payload.token))
-            dispatch(tryGetUserInformation())
-        } else {
-            response.json().then(payload => dispatch(generateMessage('error', payload.message)))
-        }
-    })
-}
-
-export const tryGetUserInformation = () => (dispatch, getState) => {
-    const state = getState()
-    const url = `${state.global.apiUrl}/users/current`
-    let token = window.sessionStorage.getItem("authorization")
-
-    fetch(url, {
-        method: 'GET',
-        headers: {
-            "Authorization": `Bearer ${token}`
-        }
-    }).then(response => {
-        if (response.ok) {
-            response.json().then(payload => dispatch(updateAuthenticationHeader(payload)))
+            dispatch(updateAuthorization(true))
         } else {
             response.json().then(payload => dispatch(generateMessage('error', payload.message)))
         }
@@ -71,6 +52,11 @@ export const closeMessage = (id) => ({
     id: id
 })
 
+export const updateAuthorization = value => ({
+    type: 'UPDATE_AUTHORIZATION',
+    value
+})
+
 const addMessage = (message) => ({
     type: 'ADD_MESSAGE',
     message: message
@@ -81,13 +67,3 @@ const closeMessageAferTimeout = (id) => (dispatch) => {
         dispatch(closeMessage(id))
     }, 6000)
 }
-
-const updateIsAuthenticated = payload => ({
-    type: 'UPDATE_IS_AUTHENTICATED',
-    value: payload
-})
-
-const updateAuthenticationHeader = token => ({
-    type: 'UPDATE_AUTHENTICATION_HEADER',
-    token
-})

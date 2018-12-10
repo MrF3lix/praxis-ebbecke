@@ -7,7 +7,7 @@ const initialState = {
     team: [],
     times: [],
     messages: [],
-    authenticationToken: null
+    isAuthenticated: false,
 }
 
 const global = (state = initialState, action) => {
@@ -61,10 +61,16 @@ const global = (state = initialState, action) => {
                 ...state,
                 user: action.value
             }
+        case 'UPDATE_AUTHORIZATION':
+            return {
+                ...state,
+                isAuthenticated: action.value
+            }
         case 'UPDATE_AUTHENTICATION_HEADER':
             return {
                 ...state,
-                authenticationToken: action.token
+                authenticationToken: action.token,
+                isAuthenticated: true
             }
         default:
             return state

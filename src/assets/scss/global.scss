@@ -13,11 +13,17 @@ header {
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    .inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
     .logo__container {
         svg {
             width: 50px;
         }
     }
+    .navigation__items {}
 }
 
 main {
