@@ -9,6 +9,7 @@ const Header = lazy(() => import('./components/_shared/header'))
 const Praxis = lazy(() => import('./components/praxis'))
 const CMS = lazy(() => import('./components/cms'))
 const Login = lazy(() => import('./components/login'))
+const Register = lazy(() => import('./components/register'))
 
 class MainRouter extends React.Component {
     componentDidMount() {
@@ -30,6 +31,7 @@ class MainRouter extends React.Component {
                         <Route path={'/'} component={Praxis} exact={true} />
                         <Route path={'/cms'} component={CMS} exact={true} />
                         <Route path={'/login'} component={Login} exact={true} />
+                        <Route path={'/register'} component={Register} exact={true} />
                     </Switch>
                 </Loading>
             </div>
