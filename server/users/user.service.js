@@ -6,7 +6,6 @@ const User = db.User
 
 const authenticate = async ({ username, password }) => {
     const user = await User.findOne({ username })
-
     if (user && bcrypt.compareSync(password, user.hash)) {
         const { hash, ...userWithoutHash } = user.toObject()
         const token = jwt.sign({ sub: user.id }, config.secret)
@@ -29,8 +28,6 @@ const create = async (userParam) => {
     if(await User.findOne({username: userParam.username})) {
         throw `Username ${userParam.username} is already taken`
     }
-
-    console.log(userParam)
     const user = new User(userParam)
     user.hash = bcrypt.hashSync(userParam.password, 10)
 

@@ -15,10 +15,24 @@ const start = () => {
     server.use(cors())
     server.use(express.static(path.join(__dirname, '../build')))
 
+    server.use((err, req, res, next) => {
+        if(401 == err.status) {
+            res.redirect('/login')
+        }
+    })
+
     server.use(jwt())
+
+    server.use('/cms', require('./cms/controller.js'))
+
     server.use('/api/cms', require('./cms/cms.controller.js'))
     server.use('/api/users', require('./users/users.controller.js'))
-    server.get('/*', (req, res) => {
+
+    server.get('/login', (req, res) => {
+        res.sendFile(path.join(__dirname, '../build', 'index.html'))
+    })
+
+    server.get('/', (req, res) => {
         res.sendFile(path.join(__dirname, '../build', 'index.html'))
     })
 

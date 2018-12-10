@@ -6,7 +6,7 @@ const jwt = () => {
     const secret = config.secret
     return expressJwt({secret, isRevoked}).unless({
         path: [
-            '/',
+            '/login',
             '/api/users/authenticate',
             '/api/users/register',
             '/api/cms/add',
@@ -19,11 +19,12 @@ const jwt = () => {
 
 const isRevoked = async (req, payload, done) => {
     const user = await userService.getById(payload.sub)
-
     if(!user) {
+        console.log('not authenticated')
         return done(null, true)
     }
 
+    console.log('authenticated')
     done()
 }
 

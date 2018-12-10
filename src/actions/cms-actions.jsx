@@ -30,7 +30,6 @@ export const tryGetTimes = () => (dispatch, getState) => {
         .then(json => dispatch(updateTimes(json)))
 }
 
-
 const updateContent = content => ({
     type: 'UPDATE_CONTENT',
     content

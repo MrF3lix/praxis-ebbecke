@@ -5,7 +5,9 @@ const initialState = {
     apiUrl: 'http://localhost:8080/api',
     content: [],
     team: [],
-    times: []
+    times: [],
+    messages: [],
+    authenticationToken: null
 }
 
 const global = (state = initialState, action) => {
@@ -35,6 +37,34 @@ const global = (state = initialState, action) => {
             return {
                 ...state,
                 times: action.times
+            }
+        case 'CLOSE_MESSAGE':
+            return {
+                ...state,
+                messages: state.messages.map(message => {
+                    if (message.id != action.id) {
+                        return message
+                    } else {
+                        message.hidden = true
+                        return message
+                    }
+                })
+            }
+        case 'ADD_MESSAGE': {
+            return {
+                ...state,
+                messages: [...state.messages, action.message]
+            }
+        }
+        case 'UPDATE_IS_AUTHENTICATED':
+            return {
+                ...state,
+                user: action.value
+            }
+        case 'UPDATE_AUTHENTICATION_HEADER':
+            return {
+                ...state,
+                authenticationToken: action.token
             }
         default:
             return state
