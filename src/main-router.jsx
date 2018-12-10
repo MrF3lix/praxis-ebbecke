@@ -11,6 +11,9 @@ const CMS = lazy(() => import('./components/cms'))
 const Login = lazy(() => import('./components/login'))
 
 class MainRouter extends React.Component {
+    componentDidMount() {
+        this.props.updateAuthorization(window.sessionStorage.getItem("authorization") !== null)
+    }
     logout() {
         window.sessionStorage.removeItem("authorization")
         this.props.updateAuthorization(false)
