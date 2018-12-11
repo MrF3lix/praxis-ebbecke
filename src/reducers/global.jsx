@@ -2,7 +2,7 @@ const initialState = {
     isMobile: false,
     isDev: false,
     isPageLoaded: false,
-    apiUrl: 'http://142.93.96.119:8080/api',
+    apiUrl: 'http://142.93.96.119/api',
     content: [],
     team: [],
     times: [],
