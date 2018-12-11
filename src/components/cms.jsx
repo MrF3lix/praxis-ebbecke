@@ -48,7 +48,7 @@ class CMS extends React.Component {
                                     }
                                 </div>
                             ))}
-                            <button type="submit">Save</button>
+                            <button type="submit">Speichern</button>
                         </form>
                     </div>
                     <h2>Team</h2>
@@ -61,7 +61,7 @@ class CMS extends React.Component {
                             </div>
                         ))}
                     </div>
-                    <h2>Address</h2>
+                    <h2>Adresse</h2>
                     <div className="cms__container">
                         {address != null &&
                             <form onSubmit={(e) => this.props.submitAddress(e, address.id)}>
@@ -75,7 +75,7 @@ class CMS extends React.Component {
                                     />
                                 </div>
                                 <div className="content__item">
-                                    <label for={content.elementId}>Street</label>
+                                    <label for={content.elementId}>Strasse</label>
                                     <input
                                         name="street"
                                         type="text"
@@ -84,7 +84,7 @@ class CMS extends React.Component {
                                     />
                                 </div>
                                 <div className="content__item">
-                                    <label for={content.elementId}>Zip</label>
+                                    <label for={content.elementId}>PLZ</label>
                                     <input
                                         name="zip"
                                         type="text"
@@ -93,7 +93,7 @@ class CMS extends React.Component {
                                     />
                                 </div>
                                 <div className="content__item">
-                                    <label for={content.elementId}>City</label>
+                                    <label for={content.elementId}>Ort</label>
                                     <input
                                         name="city"
                                         type="text"
@@ -102,7 +102,7 @@ class CMS extends React.Component {
                                     />
                                 </div>
                                 <div className="content__item">
-                                    <label for={content.elementId}>Phone</label>
+                                    <label for={content.elementId}>Telefon</label>
                                     <input
                                         name="phone"
                                         type="text"
@@ -111,7 +111,7 @@ class CMS extends React.Component {
                                     />
                                 </div>
                                 <div className="content__item">
-                                    <label for={content.elementId}>Email</label>
+                                    <label for={content.elementId}>E-mail</label>
                                     <input
                                         name="email"
                                         type="text"
@@ -119,12 +119,12 @@ class CMS extends React.Component {
                                         onChange={(e) => this.props.updateAddressValue(e.target.value, 'email')}
                                     />
                                 </div>
-                                <button type="submit">Save</button>
+                                <button type="submit">Speichern</button>
                             </form>
                         }
                     </div>
 
-                    <h2>Opening times</h2>
+                    <h2>Öffnungszeiten</h2>
                     <div className="cms__container">
                         <div className="times__item">
                             <form onSubmit={(e) => this.props.submitTimes(e)}>
@@ -140,7 +140,7 @@ class CMS extends React.Component {
                                         />
                                     </div>
                                 ))}
-                                <button type="submit">Save</button>
+                                <button type="submit">Speichern</button>
                             </form>
                         </div>
                     </div>
