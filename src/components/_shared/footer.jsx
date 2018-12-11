@@ -1,15 +1,19 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-const Footer = ({ times }) => (
+const Footer = ({ times, address }) => (
     <footer>
         <div className="info__container">
             <div className="inner">
                 <div className="address">
-                    <h4>Praxis für Naturheilverfahren Osteopathie und Physotherapie</h4>
-                    <p>Auf der Platte 10, 67678 Mehlingen</p>
-                    <p>+49 6303/80 99 033</p>
-                    <p> julia.ebbecke@gmail.com</p>
+                    {address != null &&
+                        <React.Fragment>
+                            <h4>{address.name}</h4>
+                            <p>{address.street}, {address.zip} {address.city}</p>
+                            <p>{address.phone}</p>
+                            <p>{address.email}</p>
+                        </React.Fragment>
+                    }
                 </div>
                 <div className="opening-times">
                     <h4>Öffnungszeiten</h4>
@@ -36,7 +40,8 @@ const Footer = ({ times }) => (
     </footer>
 )
 const mapStateToProps = state => ({
-    times: state.global.times
+    times: state.global.times,
+    address: state.global.address
 })
 
 export default connect(mapStateToProps, null)(Footer)

@@ -8,5 +8,6 @@ module.exports = {
     User: require('../users/user.model.js'),
     Article: require('../cms/cms.article.model.js'),
     Team: require('../cms/cms.team.model.js'),
-    Time: require('../cms/cms.times.model.js')
+    Time: require('../cms/cms.times.model.js'),
+    Address: require('../cms/cms.address.model.js')
 }

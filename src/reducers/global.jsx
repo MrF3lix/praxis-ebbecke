@@ -7,6 +7,7 @@ const initialState = {
     team: [],
     times: [],
     messages: [],
+    address: null,
     isAuthenticated: false,
 }
 
@@ -91,6 +92,19 @@ const global = (state = initialState, action) => {
                     }
                     return t
                 })
+            }
+        case 'UPDATE_ADDRESS':
+            return {
+                ...state,
+                address: action.address
+            }
+        case 'UPDATE_ADDRESS_VALUE':
+            return {
+                ...state,
+                address: {
+                    ...state.address,
+                    [action.id]: action.value
+                }
             }
         default:
             return state

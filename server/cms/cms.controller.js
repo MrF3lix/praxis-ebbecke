@@ -32,6 +32,12 @@ const getById = (req, res, next) => {
         .catch(err => next(err))
 }
 
+const getAllAddress = (req, res, next) => {
+    cmsService.getAllAddress()
+        .then(address => res.json(address))
+        .catch(err => next(err))
+}
+
 const update = (req, res, next) => {
     cmsService.update(req.params.id, req.body)
         .then(() => res.json({}))
@@ -40,18 +46,24 @@ const update = (req, res, next) => {
 
 const updateAll = (req, res, next) => {
     Object.keys(req.body).map(key => {
-        cmsService.update(key, {content: req.body[key]})
+        cmsService.update(key, { content: req.body[key] })
     })
 
-    res.json({message: 'Saved successfully!'})
+    res.json({ message: 'Saved successfully!' })
 }
 
 const updateAllTimes = (req, res, next) => {
     Object.keys(req.body).map(key => {
-        cmsService.updateTimes(key, {value: req.body[key]})
+        cmsService.updateTimes(key, { value: req.body[key] })
     })
 
-    res.json({message: 'Saved successfully!'})
+    res.json({ message: 'Saved successfully!' })
+}
+
+const updateAddress = (req, res, next) => {
+    cmsService.updateAddress(req.params.id, req.body)
+        .then(() => res.json({ message: 'Saved successfully!' }))
+        .catch(err => next(err))
 }
 
 const _delete = (req, res, next) => {
@@ -64,10 +76,12 @@ router.post('/add', create)
 router.get('/getAll', getAll)
 router.get('/getAllTeamMembers', getAllTeamMembers)
 router.get('/getOpeningTimes', getOpeningTimes)
+router.get('/getAllAddress', getAllAddress)
 router.get('/:id', getById)
 router.put('/:id', update)
 router.post('/updateAll', updateAll)
 router.post('/updateAllTimes', updateAllTimes)
+router.post('/updateAddress/:id', updateAddress)
 router.delete('/:id', _delete)
 
 module.exports = router

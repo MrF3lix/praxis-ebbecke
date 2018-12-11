@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { IconSave } from './_shared/icons'
-import { updateContentValue, updateTimeValue, tryGetContent, tryGetTeam, tryGetTimes, submitContent, submitTeam, submitTimes } from '../actions/cms-actions'
+import { updateContentValue, updateAddressValue, submitAddress, tryGetAddress, updateTimeValue, tryGetContent, tryGetTeam, tryGetTimes, submitContent, submitTeam, submitTimes } from '../actions/cms-actions'
 
 class CMS extends React.Component {
 
@@ -9,6 +9,7 @@ class CMS extends React.Component {
         this.props.tryGetContent()
         this.props.tryGetTeam()
         this.props.tryGetTimes()
+        this.props.tryGetAddress()
         this.checkAuth()
     }
     checkAuth() {
@@ -17,7 +18,7 @@ class CMS extends React.Component {
         }
     }
     render() {
-        const { content, team, times } = this.props.global
+        const { content, team, times, address } = this.props.global
         return (
             <main className="cms">
                 <div className="inner">
@@ -60,6 +61,69 @@ class CMS extends React.Component {
                             </div>
                         ))}
                     </div>
+                    <h2>Address</h2>
+                    <div className="cms__container">
+                        {address != null &&
+                            <form onSubmit={(e) => this.props.submitAddress(e, address.id)}>
+                                <div className="content__item">
+                                    <label for={content.elementId}>Name</label>
+                                    <input
+                                        name="name"
+                                        type="text"
+                                        value={address.name}
+                                        onChange={(e) => this.props.updateAddressValue(e.target.value, 'name')}
+                                    />
+                                </div>
+                                <div className="content__item">
+                                    <label for={content.elementId}>Street</label>
+                                    <input
+                                        name="street"
+                                        type="text"
+                                        value={address.street}
+                                        onChange={(e) => this.props.updateAddressValue(e.target.value, 'street')}
+                                    />
+                                </div>
+                                <div className="content__item">
+                                    <label for={content.elementId}>Zip</label>
+                                    <input
+                                        name="zip"
+                                        type="text"
+                                        value={address.zip}
+                                        onChange={(e) => this.props.updateAddressValue(e.target.value, 'zip')}
+                                    />
+                                </div>
+                                <div className="content__item">
+                                    <label for={content.elementId}>City</label>
+                                    <input
+                                        name="city"
+                                        type="text"
+                                        value={address.city}
+                                        onChange={(e) => this.props.updateAddressValue(e.target.value, 'city')}
+                                    />
+                                </div>
+                                <div className="content__item">
+                                    <label for={content.elementId}>Phone</label>
+                                    <input
+                                        name="phone"
+                                        type="text"
+                                        value={address.phone}
+                                        onChange={(e) => this.props.updateAddressValue(e.target.value, 'phone')}
+                                    />
+                                </div>
+                                <div className="content__item">
+                                    <label for={content.elementId}>Email</label>
+                                    <input
+                                        name="email"
+                                        type="text"
+                                        value={address.email}
+                                        onChange={(e) => this.props.updateAddressValue(e.target.value, 'email')}
+                                    />
+                                </div>
+                                <button type="submit">Save</button>
+                            </form>
+                        }
+                    </div>
+
                     <h2>Opening times</h2>
                     <div className="cms__container">
                         <div className="times__item">
@@ -94,11 +158,14 @@ const mapDispatchToProps = dispatch => ({
     tryGetContent: () => dispatch(tryGetContent()),
     tryGetTeam: () => dispatch(tryGetTeam()),
     tryGetTimes: () => dispatch(tryGetTimes()),
+    tryGetAddress: () => dispatch(tryGetAddress()),
     submitContent: (e) => dispatch(submitContent(e)),
     submitTeam: (e) => dispatch(submitTeam(e)),
     submitTimes: (e) => dispatch(submitTimes(e)),
+    submitAddress: (e, id) => dispatch(submitAddress(e, id)),
     updateContentValue: (value, id) => dispatch(updateContentValue(value, id)),
-    updateTimeValue: (value, id) => dispatch(updateTimeValue(value, id))
+    updateTimeValue: (value, id) => dispatch(updateTimeValue(value, id)),
+    updateAddressValue: (value, id) => dispatch(updateAddressValue(value, id))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(CMS)

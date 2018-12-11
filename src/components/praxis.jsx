@@ -1,7 +1,7 @@
 import React, { lazy } from 'react'
 import TeamSection from './sections/team'
 import { connect } from 'react-redux'
-import { tryGetContent, tryGetTeam, tryGetTimes } from '../actions/cms-actions'
+import { tryGetContent, tryGetAddress, tryGetTeam, tryGetTimes } from '../actions/cms-actions'
 
 const TitleSection = lazy(() => import('./sections/title'))
 const ContactSection = lazy(() => import('./sections/contact'))
@@ -13,10 +13,11 @@ class Praxis extends React.Component {
         this.props.tryGetContent()
         this.props.tryGetTeam()
         this.props.tryGetTimes()
+        this.props.tryGetAddress()
     }
 
     render() {
-        const { content, team, times } = this.props.global
+        const { content, team, times, address } = this.props.global
         return (
             <React.Fragment>
                 <main>
@@ -25,7 +26,7 @@ class Praxis extends React.Component {
                             <TitleSection content={content} />
                             <MotivationSection content={content} />
                             <TeamSection content={content} team={team} />
-                            <ContactSection content={content} times={times} />
+                            <ContactSection address={address} times={times} />
                         </React.Fragment>
                     }
                 </main>
@@ -42,7 +43,8 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
     tryGetContent: () => dispatch(tryGetContent()),
     tryGetTeam: () => dispatch(tryGetTeam()),
-    tryGetTimes: () => dispatch(tryGetTimes())
+    tryGetTimes: () => dispatch(tryGetTimes()),
+    tryGetAddress: () => dispatch(tryGetAddress())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Praxis)
